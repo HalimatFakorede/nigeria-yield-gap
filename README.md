@@ -3,7 +3,7 @@
 An analysis of 60 years of Nigerian agricultural data, and what it says about whether the current growth model can continue.
 
 *Halimat H. Fakorede, Agricultural Data Scientist and Operations Analyst*
-[Live dashboard](#) | [LinkedIn](https://linkedin.com/in/halimatfakorede) | [Portfolio](#)
+[Live dashboard](https://nigeria-yield-gap.streamlit.app) | [LinkedIn](https://linkedin.com/in/halimatfakorede)
 
 ---
 
