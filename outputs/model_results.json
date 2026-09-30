@@ -1,0 +1,88 @@
+{
+  "sample": {
+    "n_rows": 11615,
+    "n_countries": 221,
+    "year_min": 1961,
+    "year_max": 2023
+  },
+  "panel_fe": {
+    "n_obs": 11615,
+    "n_countries": 221,
+    "years": "1961-2023",
+    "elasticity_fertiliser": 0.08717657269366193,
+    "std_error_clustered": 0.0153956703959111,
+    "t_stat": 5.662408355846261,
+    "p_value": 1.492630967906577e-08,
+    "ci95_low": 0.057001058717676176,
+    "ci95_high": 0.11735208666964768,
+    "within_r2": 0.8925139365837212,
+    "interpretation": "A 10% increase in fertiliser intensity is associated with a 0.87% increase in cereal yield, within country, net of global year effects.",
+    "elasticity_low_input_subsample": 0.04839196528401146,
+    "n_obs_low_input": 5807
+  },
+  "gbm": {
+    "test_r2": 0.6573763824611893,
+    "baseline_r2": 0.4624300258070291,
+    "test_mae_log": 0.30502689317902554,
+    "test_mae_pct": 35.666148745588956,
+    "n_train": 9228,
+    "n_test": 2387,
+    "split_year": 2013,
+    "top_features": {
+      "ln_fert": 0.7884,
+      "ln_area": 0.1947,
+      "rural_pop_pct": 0.1125,
+      "ln_pop": 0.1042
+    }
+  },
+  "scenarios": [
+    {
+      "scenario": "Nigeria today",
+      "fert_kg_ha": 12.27,
+      "yield_kg_ha": 1610.0,
+      "yield_change_pct": 0.0,
+      "production_mt": 29.404,
+      "extra_production_mt": 0.0
+    },
+    {
+      "scenario": "Ghana level",
+      "fert_kg_ha": 36.1,
+      "yield_kg_ha": 1768.814,
+      "yield_change_pct": 9.864,
+      "production_mt": 32.304,
+      "extra_production_mt": 2.9
+    },
+    {
+      "scenario": "Ethiopia level",
+      "fert_kg_ha": 37.8,
+      "yield_kg_ha": 1775.924,
+      "yield_change_pct": 10.306,
+      "production_mt": 32.434,
+      "extra_production_mt": 3.03
+    },
+    {
+      "scenario": "Kenya level",
+      "fert_kg_ha": 33.2,
+      "yield_kg_ha": 1755.948,
+      "yield_change_pct": 9.065,
+      "production_mt": 32.069,
+      "extra_production_mt": 2.665
+    },
+    {
+      "scenario": "World average (~120)",
+      "fert_kg_ha": 120.0,
+      "yield_kg_ha": 1964.084,
+      "yield_change_pct": 21.993,
+      "production_mt": 35.871,
+      "extra_production_mt": 6.467
+    },
+    {
+      "scenario": "South Africa level",
+      "fert_kg_ha": 101.4,
+      "yield_kg_ha": 1935.457,
+      "yield_change_pct": 20.215,
+      "production_mt": 35.348,
+      "extra_production_mt": 5.944
+    }
+  ]
+}

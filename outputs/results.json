@@ -1,0 +1,214 @@
+{
+  "decomposition": {
+    "period": "1990-2023",
+    "method": "Tornqvist production-share weighted log decomposition, 3-yr endpoint averages",
+    "area_contribution_dln": 1.17,
+    "yield_contribution_dln": -0.26,
+    "total_dln": 0.91,
+    "share_from_area_pct": 128.4,
+    "share_from_yield_pct": -28.4,
+    "implied_total_growth_pct": 149.06,
+    "by_crop": {
+      "Yam": {
+        "production_growth_pct": 264.1,
+        "area_growth_pct": 384.73,
+        "yield_growth_pct": -24.74,
+        "weight": 0.33
+      },
+      "Cassava": {
+        "production_growth_pct": 145.65,
+        "area_growth_pct": 334.44,
+        "yield_growth_pct": -44.08,
+        "weight": 0.39
+      },
+      "Maize": {
+        "production_growth_pct": 110.97,
+        "area_growth_pct": 14.46,
+        "yield_growth_pct": 84.29,
+        "weight": 0.08
+      },
+      "Rice": {
+        "production_growth_pct": 186.51,
+        "area_growth_pct": 196.42,
+        "yield_growth_pct": -3.68,
+        "weight": 0.05
+      },
+      "Sorghum": {
+        "production_growth_pct": 28.93,
+        "area_growth_pct": 14.04,
+        "yield_growth_pct": 13.21,
+        "weight": 0.06
+      },
+      "Groundnut": {
+        "production_growth_pct": 235.03,
+        "area_growth_pct": 266.4,
+        "yield_growth_pct": -10.95,
+        "weight": 0.02
+      },
+      "Cowpea": {
+        "production_growth_pct": 208.77,
+        "area_growth_pct": 131.83,
+        "yield_growth_pct": 28.86,
+        "weight": 0.02
+      },
+      "Millet": {
+        "production_growth_pct": -60.52,
+        "area_growth_pct": -57.92,
+        "yield_growth_pct": -5.53,
+        "weight": 0.04
+      }
+    }
+  },
+  "yield_gap": {
+    "Cassava": {
+      "nigeria_t_ha": 5.95,
+      "best_peer": "Ghana",
+      "best_peer_t_ha": 23.7,
+      "best_peer_area_ha": 1048537.2,
+      "peer_median_t_ha": 12.5,
+      "n_peers": 5,
+      "frontier_country": NaN,
+      "frontier_t_ha": NaN,
+      "gap_vs_best_pct": 298.42,
+      "gap_vs_median_pct": 110.12,
+      "nigeria_area_ha": 9908319.2
+    },
+    "Millet": {
+      "nigeria_t_ha": 1.0,
+      "best_peer": "Ethiopia",
+      "best_peer_t_ha": 2.5,
+      "best_peer_area_ha": 447263.2,
+      "peer_median_t_ha": 0.98,
+      "n_peers": 8,
+      "frontier_country": NaN,
+      "frontier_t_ha": NaN,
+      "gap_vs_best_pct": 149.18,
+      "gap_vs_median_pct": -2.26,
+      "nigeria_area_ha": 1855494.0
+    },
+    "Sorghum": {
+      "nigeria_t_ha": 1.16,
+      "best_peer": "Ethiopia",
+      "best_peer_t_ha": 2.69,
+      "best_peer_area_ha": 1765279.8,
+      "peer_median_t_ha": 1.0,
+      "n_peers": 11,
+      "frontier_country": "Egypt",
+      "frontier_t_ha": 5.08,
+      "gap_vs_best_pct": 130.97,
+      "gap_vs_median_pct": -13.87,
+      "nigeria_area_ha": 5705500.0
+    },
+    "Yam": {
+      "nigeria_t_ha": 8.01,
+      "best_peer": "Ghana",
+      "best_peer_t_ha": 18.18,
+      "best_peer_area_ha": 540978.2,
+      "peer_median_t_ha": 15.53,
+      "n_peers": 2,
+      "frontier_country": NaN,
+      "frontier_t_ha": NaN,
+      "gap_vs_best_pct": 126.77,
+      "gap_vs_median_pct": 93.78,
+      "nigeria_area_ha": 7296948.6
+    },
+    "Rice": {
+      "nigeria_t_ha": 1.95,
+      "best_peer": "Benin",
+      "best_peer_t_ha": 3.92,
+      "best_peer_area_ha": 120127.0,
+      "peer_median_t_ha": 3.16,
+      "n_peers": 8,
+      "frontier_country": "Egypt",
+      "frontier_t_ha": 9.11,
+      "gap_vs_best_pct": 101.21,
+      "gap_vs_median_pct": 62.2,
+      "nigeria_area_ha": 4346334.0
+    },
+    "Cowpea": {
+      "nigeria_t_ha": 0.84,
+      "best_peer": "Ghana",
+      "best_peer_t_ha": 1.6,
+      "best_peer_area_ha": 179189.8,
+      "peer_median_t_ha": 0.7,
+      "n_peers": 9,
+      "frontier_country": NaN,
+      "frontier_t_ha": NaN,
+      "gap_vs_best_pct": 90.64,
+      "gap_vs_median_pct": -16.17,
+      "nigeria_area_ha": 4975144.2
+    },
+    "Maize": {
+      "nigeria_t_ha": 2.03,
+      "best_peer": "Ethiopia",
+      "best_peer_t_ha": 3.54,
+      "best_peer_area_ha": 3260920.6,
+      "peer_median_t_ha": 1.87,
+      "n_peers": 10,
+      "frontier_country": "Egypt",
+      "frontier_t_ha": 7.14,
+      "gap_vs_best_pct": 74.64,
+      "gap_vs_median_pct": -7.48,
+      "nigeria_area_ha": 6107560.8
+    },
+    "Groundnut": {
+      "nigeria_t_ha": 1.21,
+      "best_peer": "Ghana",
+      "best_peer_t_ha": 1.71,
+      "best_peer_area_ha": 337400.0,
+      "peer_median_t_ha": 0.9,
+      "n_peers": 9,
+      "frontier_country": NaN,
+      "frontier_t_ha": NaN,
+      "gap_vs_best_pct": 41.97,
+      "gap_vs_median_pct": -25.65,
+      "nigeria_area_ha": 3554788.2
+    }
+  },
+  "fertiliser_kg_ha_latest": {
+    "Ethiopia": 37.8,
+    "Egypt, Arab Rep.": 532.8,
+    "Kenya": 33.2,
+    "Ghana": 36.1,
+    "South Africa": 101.4,
+    "Nigeria": 10.9
+  },
+  "per_capita": {
+    "kg_per_person_1990": 543.3845281024661,
+    "kg_per_person_latest": 708.607867084866,
+    "latest_year": 2024,
+    "peak_kg_per_person": 791.6629364997901,
+    "peak_year": 2006,
+    "decline_from_peak_pct": -10.491216095342127
+  },
+  "value_of_closing_gap": {
+    "total_extra_tonnes": 125034653.85104375,
+    "total_value_usd": 50079461905.50534,
+    "by_crop": {
+      "Cassava": {
+        "nigeria_area_ha": 9908319.2,
+        "yield_gain_t_ha": 6.55,
+        "extra_tonnes": 64918343.37,
+        "price_usd_t": 261.5,
+        "price_source": "peer median (imputed)",
+        "value_usd": 16976146791.26
+      },
+      "Yam": {
+        "nigeria_area_ha": 7296948.6,
+        "yield_gain_t_ha": 7.52,
+        "extra_tonnes": 54843021.26,
+        "price_usd_t": 556.9,
+        "price_source": "peer median (imputed)",
+        "value_usd": 30542078538.91
+      },
+      "Rice": {
+        "nigeria_area_ha": 4346334.0,
+        "yield_gain_t_ha": 1.21,
+        "extra_tonnes": 5273289.22,
+        "price_usd_t": 485.7,
+        "price_source": "Nigeria (FAOSTAT)",
+        "value_usd": 2561236575.33
+      }
+    }
+  }
+}
