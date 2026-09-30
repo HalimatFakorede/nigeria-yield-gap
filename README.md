@@ -106,7 +106,7 @@ src/
   analysis.py       decomposition, yield gap, value of closing it
   model.py          panel fixed effects, gradient boosting, scenarios
 app.py              Streamlit dashboard
-data/raw/           as downloaded
+data/raw/           downloaded by data_prep.py, not committed
 data/processed/     tidy analysis tables
 outputs/figures/    all charts
 outputs/tables/     decomposition, yield gap, scenarios
@@ -151,7 +151,7 @@ National averages hide everything that matters to an individual farmer. A 2 t/ha
 
 This is association, not causation. Fixed effects take out time invariant country traits and global year shocks, but fertilizer is not randomly assigned. Countries that use more of it also tend to have better roads, credit and extension, and those raise yields on their own.
 
-FAOSTAT is partly imputed. A lot of African production figures are FAO estimates rather than measured censuses. The source flags are kept in `data/raw/`.
+FAOSTAT is partly imputed. A lot of African production figures are FAO estimates rather than measured censuses. The source flags come down with the raw files when you run data_prep.
 
 Producer prices are incomplete. FAOSTAT has no Nigerian cassava or yam producer price series in this release, so I used the peer median and labelled it as imputed. Any value figure here is an order of magnitude, not a forecast.
 
