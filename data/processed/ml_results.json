@@ -1,0 +1,18 @@
+{
+  "task": "predict ln(cereal yield) by country and year",
+  "split": {
+    "type": "time",
+    "train_before": 2013,
+    "n_train": 7207,
+    "n_test": 2081
+  },
+  "model": "HistGradientBoostingRegressor(max_iter=400, learning_rate=0.06, max_depth=6)",
+  "r2_time_split_no_lag": 0.7211,
+  "r2_random_split_no_lag": 0.8672,
+  "r2_best_baseline": 0.8823,
+  "r2_model_with_lag": 0.8797,
+  "improvement_over_baseline": -0.0026,
+  "typical_error_pct": 19.8,
+  "baseline": "each country held at its last yield before the split",
+  "takeaway": "The model barely beats assuming nothing changes. Yields are very persistent and these variables add little on top."
+}

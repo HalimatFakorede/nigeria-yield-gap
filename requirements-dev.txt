@@ -1,0 +1,8 @@
+-r requirements.txt
+
+jupyter>=1.0
+ipykernel>=6.25
+requests>=2.31
+statsmodels>=0.14
+scikit-learn>=1.3
+pytest>=7.4

@@ -1,0 +1,41 @@
+{
+  "model": "two-way fixed effects OLS, ln(cereal yield) on ln(fertilizer per ha)",
+  "controls": [
+    "ln(cereal area)",
+    "rural population pct"
+  ],
+  "standard_errors": "clustered by country",
+  "n_obs": 9466,
+  "n_countries": 178,
+  "years": [
+    1961,
+    2024
+  ],
+  "elasticity": 0.0864,
+  "std_error": 0.0171,
+  "t_stat": 5.07,
+  "ci95": [
+    0.053,
+    0.1198
+  ],
+  "elasticity_no_fixed_effects": 0.2317,
+  "elasticity_country_fe_only": 0.1189,
+  "elasticity_low_input": 0.051,
+  "elasticity_high_input": 0.1251,
+  "median_fert_kg_ha": 59.8,
+  "nigeria_fert_kg_ha": 10.7,
+  "nigeria_cereal_yield_kg_ha": 1589,
+  "scenarios": {
+    "Ghana's level": {
+      "fert_kg_ha": 34.1,
+      "yield_change_pct": 6.1,
+      "implied_yield_kg_ha": 1685
+    },
+    "world median": {
+      "fert_kg_ha": 59.8,
+      "yield_change_pct": 9.2,
+      "implied_yield_kg_ha": 1734
+    }
+  },
+  "note": "observational data, associations not causes"
+}
