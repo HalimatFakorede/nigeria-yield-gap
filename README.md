@@ -1,6 +1,6 @@
 # Nigeria Yield Gap
 
-**Live dashboard: https://REPLACE-WITH-YOUR-LINK.streamlit.app**
+**Live dashboard: https://nigeria-yield-gap.streamlit.app/**
 
 Nigeria's output of eight staple crops grew 149% between
 1990 and 2023. I wanted to know where that growth came
@@ -17,10 +17,11 @@ way at -28%. Maize is the exception, with yield up
 84% on 14% more land.
 
 **Food per person peaked in 2006.**
-543 kg in 1990, 792 kg
-at the peak, 709 kg in 2024. The line is bumpy and 2018
-came within 3% of the peak, so I would say it stopped improving rather than collapsed.
-Clearing more land stopped keeping up with population growth.
+Food per person stopped improving in 2006.
+In 1990 Nigeria produced 543 kg of these crops per person. 
+By 2006 it was 792 kg. In 2024 it was 709 kg.
+The numbers jump around a lot and 2018 nearly matched 2006, so I would not call it a collapse. 
+It just stopped getting better. Nigeria kept clearing land, but not fast enough to keep up with how quickly the population was growing.
 
 **Nigeria is not broadly behind. The gap is cassava.**
 It beats the peer median on 6 of 8
@@ -31,21 +32,17 @@ Ghana. That one crop is 70% of the gap.
 ![Yield gap](outputs/figures/03_yield_gap.png)
 
 **Fertilizer explains less of it than I expected.**
-Nigeria uses 16 kg/ha against Ghana's 37 and Egypt's
-577. A fixed effects regression across 178 countries puts the
-elasticity at 0.086, and 0.051 for low input
-countries like Nigeria. So 10% more fertilizer goes with about
-0.5% more yield.
+Nigeria uses 16 kg of fertilizer per hectare. Ghana uses 37. Egypt uses 577.
+That looks like the answer. But I tested it across 178 countries, 
+and for a country like Nigeria, 10% more fertilizer only gives about 0.5% more yield.
 
-The effect is bigger where input use is already high (0.125)
-than where it is low (0.051), which suggests fertilizer needs
-the rest of the system with it.
+Fertilizer also helps more where there is already a lot of it. 
+So it probably does not work on its own. It needs water, better seed and roads with it.
 
 ## How I did it
 
 **Three year averages at each end.** Using single years moves the headline between
-150% and 177% depending on which
-years I pick.
+150% and 177% depending on which years I pick.
 
 **Logs for the split.** Production is area times yield, so part of the growth belongs to
 both at once. Applying the land change first gives 163.8%,
@@ -87,7 +84,7 @@ python -m venv .venv
 pip install -r requirements-dev.txt
 ```
 
-Run the notebooks in order, 01 to 06. The raw data downloads itself.
+Run the notebooks in order. The raw data downloads itself.
 
 ```bash
 pytest -q
