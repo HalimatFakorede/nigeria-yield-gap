@@ -1,0 +1,35 @@
+{
+  "window": {
+    "start": 1990,
+    "end": 2023,
+    "endpoint_years_averaged": 3
+  },
+  "production_growth_pct": 149.1,
+  "share_from_area_pct": 128.4,
+  "share_from_yield_pct": -28.4,
+  "naive_split": {
+    "land_applied_first_pct": 163.8,
+    "yield_applied_first_pct": 110.0,
+    "interaction_tonnes": -51933871,
+    "interaction_share_of_gain_pct": -53.7
+  },
+  "endpoint_sensitivity": {
+    "single_year_min_pct": 150.5,
+    "single_year_max_pct": 176.7
+  },
+  "yield_gap": {
+    "reference_window": [
+      2019,
+      2023
+    ],
+    "min_peer_area_share": 0.1,
+    "crops_compared": 8,
+    "crops_above_peer_median": 6,
+    "crops_leading_best_peer": [
+      "Cowpea",
+      "Yam"
+    ],
+    "cassava_share_of_upside_pct": 70,
+    "total_upside_tonnes": 250225883
+  }
+}

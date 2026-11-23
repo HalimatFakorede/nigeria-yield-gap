@@ -1,0 +1,18 @@
+{
+  "task": "predict ln(cereal yield) by country and year",
+  "split": {
+    "type": "time",
+    "train_before": 2013,
+    "n_train": 7207,
+    "n_test": 2081
+  },
+  "model": "HistGradientBoostingRegressor(max_iter=400, learning_rate=0.06, max_depth=6)",
+  "r2_time_split_no_lag": 0.7209,
+  "r2_random_split_no_lag": 0.8677,
+  "r2_best_baseline": 0.8823,
+  "r2_model_with_lag": 0.8867,
+  "improvement_over_baseline": 0.0044,
+  "typical_error_pct": 19.5,
+  "baseline": "each country held at its last yield before the split",
+  "takeaway": "Compare the saved model and baseline R2 values on the same test rows. Same-year predictor availability must be checked before operational forecasting."
+}
