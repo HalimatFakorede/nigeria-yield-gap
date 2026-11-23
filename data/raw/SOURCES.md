@@ -40,3 +40,7 @@ From the public API, no key needed.
 The indicator endpoints mix regions and income groups in with countries, and filtering on
 the length of the code does not remove them because `WLD` is three letters.
 `real_country_codes()` uses the World Bank's own country list instead.
+
+## Rebuild record
+
+All six notebooks were executed in order using the FAOSTAT Africa crop-production download and live World Bank WDI responses. The downloaded FAOSTAT CSV used for this rebuild had SHA-256 `ce8fb84f11b6d38f6a3dcfc2162a4fc2de2c4b481a158cc21b438dd609b516af`. The resulting saved `model_frame.csv` has SHA-256 `423d1f797f9e0f2f3682cad6239e3062f88e4540ea0526df151aab4bc06da473`. World Bank API responses were not archived separately. Sources can be revised, so future fresh downloads may differ.
