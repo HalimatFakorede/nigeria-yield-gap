@@ -1,127 +1,125 @@
-# Nigeria Yield Gap
+# Nigeria Crop Growth and Yield Analysis
 
-**Live dashboard: https://nigeria-yield-gap.streamlit.app/**
+**Has growth in Nigeria's crop production come from harvesting more area, improving yields, or both?**
 
-Nigeria's output of eight staple crops grew 149% between
-1990 and 2023. I wanted to know where that growth came
-from, whether it kept up with the population, and how Nigerian yields compare with other
-countries.
+I analyzed production, harvested area, and yield for eight crops in Nigeria. I wanted to understand how these measures changed over time, compare Nigeria's yields with those of selected African countries, and examine the relationship between fertilizer use and cereal yields.
 
-![Growth by crop](outputs/figures/01_decomposition.png)
+[Open the dashboard](https://nigeria-yield-gap.streamlit.app/)
+
+## The questions
+
+1. How did harvested area and yield change for each crop?
+2. How much did changes in area and yield contribute to a weighted index of production growth?
+3. How do Nigerian yields compare with those of selected countries that grow the same crops?
+4. What relationship appears between fertilizer use and cereal yields in country-level data?
+5. Does a machine-learning model improve on a simple yield benchmark?
 
 ## What I found
 
-**The growth came from land, not from better farming.**
-128% of it came from planting more. Yield pulled the other
-way at -28%. Maize is the exception, with yield up
-84% on 14% more land.
+### Area and yield did not change in the same way for every crop
 
-**Food per person peaked in 2006.**
-Food per person stopped improving in 2006.
-In 1990 Nigeria produced 543 kg of these crops per person. 
-By 2006 it was 792 kg. In 2024 it was 709 kg.
-The numbers jump around a lot and 2018 nearly matched 2006, so I would not call it a collapse. 
-It just stopped getting better. Nigeria kept clearing land, but not fast enough to keep up with how quickly the population was growing.
+The analysis compares averages for **1990–1992** and **2021–2023**. Maize yield increased by approximately **84%**, while its harvested area increased by about **14%**. Other crops followed different patterns; the dashboard shows both changes for each crop.
 
-**Nigeria is not broadly behind. The gap is cassava.**
-It beats the peer median on 6 of 8
-crops and leads on cowpea and yam. But cassava, its
-biggest crop by area, yields 5.9 t/ha against 23.7 in
-Ghana. That one crop is 70% of the gap.
+For the eight crops together, I used a weighted index to separate changes in production into area and yield components. In the saved results, the area component represented **128.4%** of the net change in the weighted log index, while the yield component represented **−28.4%**. The area contribution can be greater than 100% because the negative yield contribution offsets part of it. These percentages refer to the index, not the share of additional tonnes produced.
 
-![Yield gap](outputs/figures/03_yield_gap.png)
+This is a breakdown of observed changes, **not proof that expanding harvested area caused production to grow**. The index is also not the same as the percentage change in total tonnes produced. The method is explained below.
 
-**Fertilizer explains less of it than I expected.**
-Nigeria uses 16 kg of fertilizer per hectare. Ghana uses 37. Egypt uses 577.
-That looks like the answer. But I tested it across 178 countries, 
-and for a country like Nigeria, 10% more fertilizer only gives about 0.5% more yield.
+### Nigeria's position depends on the crop and comparison group
 
-Fertilizer also helps more where there is already a lot of it. 
-So it probably does not work on its own. It needs water, better seed and roads with it.
+For **2019–2023**, Nigeria's average yield was above the median of the qualifying comparison countries for **six of the eight crops**. The countries in each comparison vary because a country had to grow at least 10% of Nigeria's harvested area for that crop to qualify. Some groups are small; the yam comparison has one qualifying peer.
 
-## How I did it
+For cassava, the saved data shows average yields of about **5.9 tonnes per hectare in Nigeria** and **23.7 tonnes per hectare in Ghana**. This is a comparison, not an estimate of what Nigeria could achieve: farming conditions, data quality, and other factors differ.
 
-**Three year averages at each end.** Using single years moves the headline between
-150% and 177% depending on which years I pick.
+### The model was only slightly ahead of a simple benchmark
 
-**Logs for the split.** Production is area times yield, so part of the growth belongs to
-both at once. Applying the land change first gives 163.8%,
-applying the yield change first gives 110.0%, and that
-shared part is 54% of the total. Logs turn
-the multiplication into an addition, which has no order.
+I compared a gradient boosting model with a baseline that uses each country's last recorded yield before the test period. In a rerun using the saved modeling data, the model achieved an **R² of 0.8867**, compared with **0.8823** for the baseline. Both scores were calculated on log cereal yield; the difference is small.
 
-**Yield worked out from production and area** rather than taken from the published
-column, then checked against it. They agree to within 0.4%.
+The model uses some inputs from the same year as the yield being assessed. I have not established whether those inputs would be available when a prediction is needed, so this is a retrospective comparison—not a validated real-time forecast.
 
-**Peers have to be a real size.** A country only counts for a crop if it farms at least
-10% as much of it as Nigeria. Without that, Niger sets the
-cassava target on 23,000 hectares against Nigeria's 9.9 million.
+## How I analyzed the data
 
-**The model** is two way fixed effects OLS, 9,466 rows, 178
-countries, errors clustered by country. Without fixed effects it looks like
-0.232.
+### Production, area, and yield
 
-## Limits
+For each crop:
 
-- A lot of the Nigerian data is estimated rather than measured, so long run trends mean
-  something but single years do not.
-- The 10% peer cut-off is a judgement. It is in `src/config.py`
-  so it can be changed.
-- The fertilizer results are associations, not causes.
-- A gradient boosting model scored 0.887 against
-  0.882 for just assuming each country stays where it was. Barely
-  worth it, and I say so.
-- Egypt and South Africa are in to show the best case, not as a target.
-- These are national averages, which hide a lot in a country this size.
+> **Production = harvested area × yield per hectare**
 
-`NOTES.md` has the things that went wrong along the way.
+I calculated the average harvested area and average yield for the first and last three-year periods. I then used the changes in those averages to examine the area and yield components of production growth.
 
-## Running it
+To bring the eight crops together, the notebook gives each crop a weight based on its share of production at the start and end of the period. It uses logarithms to combine the crop-level changes. The result is a **weighted production index**, not a direct calculation of the change in total production tonnes.
 
-```bash
-python -m venv .venv
-.venv\Scripts\activate
-pip install -r requirements-dev.txt
-```
+The notebook multiplies average area by average yield to form the endpoint values. This is not always the same as calculating average annual production. The analysis does not establish whether an increase in harvested area involved newly cleared land.
 
-Run the notebooks in order. The raw data downloads itself.
+### Peer-country comparison
 
-```bash
-pytest -q
-streamlit run app.py
-```
+I compared Nigeria's average yield for each crop with selected African countries over **2019–2023**. To avoid comparing Nigeria with countries growing a very small amount of a crop, I included a peer only when its average harvested area met the 10% threshold described above. The choice of countries and threshold affects the results.
 
-Delete `data/processed/` and `outputs/` and rerun, and everything comes back.
+### Fertilizer and cereal yields
 
-## Files
+I used World Bank country-level data to examine the relationship between fertilizer use and cereal yields. The analysis includes country and year fixed effects and controls for cereal area and rural population share. The saved model uses **9,466 observations from 178 countries**.
 
-```
-app.py                    dashboard
-src/config.py             all the settings
-src/io_utils.py           downloading and loading
-notebooks/
-  01_data_prep            raw FAOSTAT to a clean panel
-  02_context              population and fertilizer
-  03_analysis             growth split and yield gap
-  04_model                fixed effects regression
-  05_machine_learning     how predictable is any of this
-  06_figures              the charts
-tests/test_pipeline.py    18 checks on the output
-data/raw/                 downloads here, not committed
-data/processed/           committed
-outputs/figures/
-```
+This is an observational analysis. It can show a relationship in the data, but it does not establish that fertilizer use caused yields to change. Fertilizer is measured per hectare of arable land, while the yield measure covers cereals; both are national-level measures.
 
-Settings live in `src/config.py`: the crops, the countries, the year window, the peer
-cut-off, the yield bounds. The notebooks write their headline numbers to JSON and the
-dashboard and this README read from there, so nothing is typed twice.
+### Machine-learning comparison
+
+I trained the model on data from **before 2013** and tested it on **2013–2024**. The baseline holds each country's yield at its last available value before the test period. For the test rows, the model also receives that pre-test yield as an input.
+
+The small score difference should not be treated as proof that the model will perform better in practice. The same-year input limitation above matters, and additional time-based tests would be needed.
 
 ## Data
 
-FAOSTAT Production Crops and Livestock (Africa) and World Bank WDI. 8 crops, 15
-countries, 1961 to 2024. See `data/raw/SOURCES.md`.
+| Source | Used for |
+|---|---|
+| FAOSTAT Crops and Livestock Products | Crop production and harvested area |
+| World Bank World Development Indicators | Population, fertilizer use, cereal yield, and other country indicators |
+
+The eight crops are **maize, rice, cassava, sorghum, millet, yam, cowpea, and groundnut**. The crop comparison covers Nigeria and selected African countries. The fertilizer model uses a separate international dataset.
+
+See [`data/raw/SOURCES.md`](data/raw/SOURCES.md) for data links and indicator codes. Some observations are estimated or imputed rather than directly measured, and source data can be revised.
+
+## Limits
+
+- The analysis covers eight crops and uses national averages. It does not describe every farm or all food production in Nigeria.
+- Combined production per person in the notebooks is not a measure of food consumption, nutrition, or food security. The crops differ in composition and edible content.
+- Peer groups differ by crop, and high yields in another country are not automatically achievable in Nigeria.
+- The fertilizer results are associations, not evidence of cause and effect.
+- Model scores can vary with source data and software versions.
+- The project was rebuilt from downloaded FAOSTAT and World Bank data, and the existing tests passed. The tests check parts of the outputs; they do not prove every result is correct.
+
+## Run the dashboard on Windows
+
+From the repository folder:
+
+```powershell
+py -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install -r requirements.txt
+streamlit run app.py
+```
+
+The dashboard reads the saved files in `data/processed/`.
+
+## Rerun the analysis
+
+Install the development requirements with `python -m pip install -r requirements-dev.txt`, then run the notebooks in order from the `notebooks` folder. They download data from FAOSTAT and the World Bank when needed. Source revisions may change the results, so keep a backup of the saved outputs before rerunning.
+
+The rebuild reported above used **Python 3.13.18, scikit-learn 1.6.1, pandas 2.2.3, and NumPy 2.3.5**. Results may differ across software versions.
+
+To run the existing checks:
+
+```powershell
+python -m pytest -q
+```
+
+## Project files
+
+- `app.py` — Streamlit dashboard
+- `notebooks/` — data preparation, analysis, modeling, and charts
+- `src/` — settings and data-loading code
+- `data/processed/` — saved analysis results
+- `tests/` — checks on saved outputs
+- `NOTES.md` — development notes
 
 ---
 
-**Halimat H. Fakorede** · agriculture graduate working in data ·
-[LinkedIn](https://linkedin.com/in/halimatfakorede) · fakoredehalimat1@gmail.com
+**Halimat H. Fakorede** · [LinkedIn](https://linkedin.com/in/halimatfakorede) · [Email](mailto:fakoredehalimat1@gmail.com)

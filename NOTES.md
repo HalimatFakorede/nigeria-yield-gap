@@ -16,8 +16,11 @@ the World Bank's own country list. Moved the elasticity about 4%.
 
 **Baseline too weak.** My gradient boosting model scored 0.72 against each country's own
 average at 0.49, which looked good. Holding each country at its last known yield scores
-0.88 and beats it. Added a lagged yield to the model, which gets it to 0.887. Barely
-ahead.
+0.88 and beats it. Added a yield history feature to the model. In a rerun on the committed modeling data,
+the model scored R² 0.8867 versus 0.8823 for the last-known-yield baseline. The difference
+is small. The previous saved model score was 0.8797; the reason for the change has not
+been established. Same-year feature availability also needs checking before calling this
+a real-time forecast.
 
 **Argument order.** A function returned `(-240, -57, -297)` instead of `(40, -15, 25)`
 because the parameters were declared in a different order to how I called it. Both
